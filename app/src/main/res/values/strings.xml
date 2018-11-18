@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Gallery</string>
+    <string name="list">LIST</string>
+    <string name="carousel">CAROUSEL</string>
+    <string name="title">Title</string>
+    <string name="description">Description</string>
+</resources>

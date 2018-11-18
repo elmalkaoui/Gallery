@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/list"
+          android:icon="@drawable/ic_format_list_bulleted"
+          android:title="@string/list"/>
+    <item android:id="@+id/carousel"
+          android:icon="@drawable/ic_view_carousel"
+          android:title="@string/carousel"/>
+</menu>
