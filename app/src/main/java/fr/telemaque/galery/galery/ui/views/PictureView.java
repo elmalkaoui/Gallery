@@ -19,7 +19,9 @@ import okhttp3.internal.Util;
 /**
  * Created by THINKPAD T450 on 17/11/2018.
  */
-
+/*
+*PictureView represent a custom component to display image and title of a picture object
+*/
 public class PictureView extends ConstraintLayout {
 
     private TextView mTitleTextView;
@@ -41,9 +43,11 @@ public class PictureView extends ConstraintLayout {
         mPictureImageView = findViewById(R.id.imageView);
     }
 
+    //fill views (mTitleTextView and mPictureImageView) by information within picture passed in argument
     public void fillData(Picture picture){
         if(picture != null){
             mTitleTextView.setText(picture.getTitle());
+            //Picasso load image with the specific path in mPictureImageView
             Picasso.with(mContext).load(picture.getImagePath()).into(mPictureImageView);
         }
     }

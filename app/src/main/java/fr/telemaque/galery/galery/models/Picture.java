@@ -9,10 +9,6 @@ import com.google.gson.annotations.SerializedName;
 
 public class Picture {
 
-    @SerializedName("id")
-    @Expose
-    private String id;
-
     @SerializedName("title")
     @Expose
     private String title;
@@ -25,9 +21,6 @@ public class Picture {
     @Expose
     private String description;
 
-    public String getId() {
-        return id;
-    }
 
     public String getTitle() {
         return title;

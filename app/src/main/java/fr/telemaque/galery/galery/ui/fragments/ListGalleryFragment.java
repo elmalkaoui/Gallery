@@ -19,7 +19,10 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-
+/*
+* this fragment represent a list of pictures in form of list
+* using RecycleView component
+*/
 public class ListGalleryFragment extends Fragment {
 
     private RecyclerView mRecyclerView;
@@ -56,6 +59,8 @@ public class ListGalleryFragment extends Fragment {
         mRecyclerView.setAdapter(mRecycleViewAdapter);
     }
 
+    //getting data (pictures list) by calling WSManager, on response the we fill mPicturesList
+    // and notify RecycleView adapter that the list is updated by calling notifyDatasetchanged()
     private void loadData() {
         WSManager.getInstance().getPictures(new Callback<ArrayList<Picture>>() {
             @Override
@@ -75,6 +80,7 @@ public class ListGalleryFragment extends Fragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
+        //on destroying Activity i cancel all httpclient calls currently enqueued or executing
         WSManager.getInstance().cancelAll();
     }
 }

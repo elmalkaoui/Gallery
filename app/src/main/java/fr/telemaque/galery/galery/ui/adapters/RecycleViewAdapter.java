@@ -13,6 +13,7 @@ import fr.telemaque.galery.galery.ui.views.PictureView;
  * Created by THINKPAD T450 on 17/11/2018.
  */
 
+
 public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.PictureHolder> {
 
     private ArrayList<Picture> mPicturesList;
@@ -45,13 +46,16 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.
 
 
     public class PictureHolder extends RecyclerView.ViewHolder {
+        //Custom component represent a picture by image and its title
         PictureView mPictureView;
 
         public PictureHolder(PictureView pictureView) {
             super(pictureView);
             mPictureView = pictureView;
         }
-        public void fillData(Picture picture){
+
+        //filling mPictureView by picture details of picture passed in argument
+         public void fillData(Picture picture){
             mPictureView.fillData(picture);
         }
     }

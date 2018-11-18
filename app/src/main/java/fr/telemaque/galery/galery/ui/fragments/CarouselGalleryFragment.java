@@ -39,7 +39,7 @@ public class CarouselGalleryFragment extends Fragment {
     public CarouselGalleryFragment() {
     }
 
-    public static CarouselGalleryFragment newInstance(String param1, String param2) {
+    public static CarouselGalleryFragment newInstance() {
         CarouselGalleryFragment fragment = new CarouselGalleryFragment();
         return fragment;
     }
@@ -68,6 +68,8 @@ public class CarouselGalleryFragment extends Fragment {
 
     }
 
+    //call asynchronous for getting data (pictures list) by calling WSManager, on response i fill mPicturesList
+    // after we call inislider to init ImageSlider with data in mPicturesList
     private void loadData() {
         WSManager.getInstance().getPictures(new Callback<ArrayList<Picture>>() {
             @Override
@@ -84,17 +86,25 @@ public class CarouselGalleryFragment extends Fragment {
         });
     }
 
-
+    /*
+    *fill mImageSlider with data in mPictures list and configure
+    * the way wich the slider will display pictures
+    */
     private void initSlider(){
         for(Picture picture : mPicturesList){
+            //declaring new slide
             TextSliderView textSliderView = new TextSliderView(getContext());
-            // initialize a SliderLayout
+            // initialize  slide with title, image and ScaleType (in this case image fit slider)
             textSliderView
                     .description(picture.getTitle())
                     .image(picture.getImagePath())
                     .setScaleType(BaseSliderView.ScaleType.Fit);
+            //adding slide to sliderLayout(mPictureSlider)
             mPictureSlider.addSlider(textSliderView);
         }
+        /*adding listener to mPictureListener to update mTitleTextView
+        * and mDescriptionTextView when page is changed
+        * */
         mPictureSlider.addOnPageChangeListener(new ViewPagerEx.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -114,15 +124,19 @@ public class CarouselGalleryFragment extends Fragment {
 
             }
         });
-        mPictureSlider.setPresetTransformer(SliderLayout.Transformer.Foreground2Background);
-        mPictureSlider.setPresetIndicator(SliderLayout.PresetIndicators.Center_Top);
+        //defining animation between slides
+        mPictureSlider.setPresetTransformer(SliderLayout.Transformer.Accordion);
+        //defining slide indicator position
+        mPictureSlider.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom);
         mPictureSlider.setCustomAnimation(new DescriptionAnimation());
+        //set duration between slide change automatically
         mPictureSlider.setDuration(4000);
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
+        //on destroying Activity i cancel all httpclient calls currently enqueued or executing
         WSManager.getInstance().cancelAll();
     }
 }
