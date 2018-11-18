@@ -1,7 +1,9 @@
 package fr.telemaque.galery.galery.ui.fragments;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -53,6 +55,10 @@ public class ListGalleryFragment extends Fragment {
 
     private void initViews(View view) {
         mRecyclerView = view.findViewById(R.id.recycle_view);
+        //add a divider_item to mRecycleView
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(mRecyclerView.getContext(),
+                RecyclerView.VERTICAL);
+        mRecyclerView.addItemDecoration(dividerItemDecoration);
         mPicturesList = new ArrayList<Picture>();
         mRecycleViewAdapter = new RecycleViewAdapter(getContext(), mPicturesList);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));

@@ -32,7 +32,9 @@ public class MainActivity extends AppCompatActivity {
         initViews();
         initFragments();
         initListeners();
-        showFragment(mListGalleryFragment);
+        //select mListGalleryFragment if the application is lunched for first time
+        if(savedInstanceState == null)
+            mBottomNavigationView.setSelectedItemId(R.id.list);
 
     }
 
@@ -70,6 +72,5 @@ public class MainActivity extends AppCompatActivity {
         transaction.replace(R.id.frame_layout, fragment);
         transaction.commit();
     }
-
 
 }
