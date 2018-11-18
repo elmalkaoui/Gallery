@@ -5,7 +5,7 @@ A test coding proposed by Télémaque
 Overview
 
 The coding  test consists of making an Android Application listing pictures in two form, 
-first in list form and second in a carousel form, and a navigation bar to navigate between two view.
+first in list and second in a carousel form, and a navigation bar to navigate between two view.
 
 Coding context
 
