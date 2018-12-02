@@ -1,7 +1,5 @@
 Coding Test
 
-A test coding proposed by Télémaque
-
 Overview
 
 The coding  test consists of making an Android Application listing pictures in two form, 
